@@ -47,7 +47,7 @@
         ]
     },
     "suggest": {
-        "wilycode/route-attribute": "Optional PHP attribute-based route declarations (separate integration package).",
+        "wilycode/router-attribute": "Optional PHP attribute-based route declarations (separate integration package).",
         "wilycode/router-profiler": "Optional router and controller timing diagnostics (separate integration package)."
     },
     "keywords": [
