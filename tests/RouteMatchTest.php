@@ -55,7 +55,7 @@ final class RouteMatchTest extends TestCase
     {
         $r = new Route(HttpMethod::Get, '/u/{id}', 'req');
 
-        self::assertFalse($r->generatePath([]));
+        self::assertNull($r->generatePath([]));
         self::assertSame('/u/5', $r->generatePath(['id' => 5]));
     }
 }
