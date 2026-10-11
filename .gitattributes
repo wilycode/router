@@ -1,0 +1,15 @@
+* text=auto eol=lf
+*.php text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+
+# Keep development tooling in Git, but omit it from GitHub source archives.
+/tests export-ignore
+/phpunit.xml export-ignore
+/.github export-ignore
+/.gitignore export-ignore
+/.gitattributes export-ignore
+/.editorconfig export-ignore
+/CONTRIBUTING.md export-ignore
+/CHANGELOG.md export-ignore
+/composer.lock export-ignore
