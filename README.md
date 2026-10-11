@@ -161,16 +161,16 @@ closures or live service objects).
 The following packages are **not** installed with `wilycode/router` and are **not**
 required for routing:
 
-| Package                                                                    | Purpose |
-|----------------------------------------------------------------------------| --- |
-| [`wilycode/router-attribute`](https://github.com/wilycode/route-attribute) | Declaring routes using PHP attributes instead of manually registering every route. |
-| [`wilycode/router-profiler`](https://github.com/wilycode/router-profiler)  | Optional timing and diagnostic measurements for route matching and controller execution. |
+| Package                                                                     | Purpose |
+|-----------------------------------------------------------------------------| --- |
+| [`wilycode/router-attribute`](https://github.com/wilycode/router-attribute) | Declaring routes using PHP attributes instead of manually registering every route. |
+| [`wilycode/router-profiler`](https://github.com/wilycode/router-profiler)   | Optional timing and diagnostic measurements for route matching and controller execution. |
 
 When these integrations are published and available for installation, they can be
 added independently:
 
 ```bash
-composer require wilycode/route-attribute
+composer require wilycode/router-attribute
 # or
 composer require wilycode/router-profiler
 ```
