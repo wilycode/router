@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace WilyCode\Router;
 
+use DateTimeInterface;
 use InvalidArgumentException;
+use WilyCode\Router\Rule\BoolRule;
+use WilyCode\Router\Rule\DateRule;
 use WilyCode\Router\Rule\RuleInterface;
 use WilyCode\Router\Rule\StringRule;
 
@@ -298,7 +301,28 @@ final class Route
                     return '';
                 }
 
-                $output .= rawurlencode((string) $value);
+                $name = $node[1];
+                $rule = $this->rules()[$name];
+                if ($rule instanceof DateRule && $value instanceof DateTimeInterface) {
+                    $raw = $value->format('Y-m-d');
+                } elseif ($rule instanceof BoolRule && is_bool($value)) {
+                    $raw = $value ? 'true' : 'false';
+                } elseif (is_string($value) || is_int($value) || is_float($value)) {
+                    $raw = (string) $value;
+                } elseif (is_bool($value)) {
+                    $raw = $value ? '1' : '0';
+                } else {
+                    throw new InvalidArgumentException('Unsupported value for route parameter: ' . $name);
+                }
+
+                $encoded = rawurlencode($raw);
+                if ((!$rule->allowsPathSeparator() && str_contains($raw, '/'))
+                    || !$rule->validate($raw)
+                    || !$rule->validate($encoded)) {
+                    throw new InvalidArgumentException('Invalid value for route parameter: ' . $name);
+                }
+
+                $output .= $encoded;
                 continue;
             }
 
